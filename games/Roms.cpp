@@ -30,6 +30,7 @@
 #include "RomSettings.hpp"
 #include "RomUtils.hpp"
 #include "emucore/OSystem.hxx"
+#include <vector>
 
 // include the game implementations
 #include "supported/AirRaid.hpp"
@@ -169,6 +170,27 @@ static const RomSettings *roms[]  = {
     new ZaxxonSettings(),
 };
 
+/* levenshtein function copied from
+ * http://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance
+ */
+using std::vector;
+template <class T> unsigned int edit_distance(const T& s1, const T& s2)
+{
+    const size_t len1 = s1.size(), len2 = s2.size();
+    vector<vector<unsigned int> > d(len1 + 1, vector<unsigned int>(len2 + 1));
+ 
+    d[0][0] = 0;
+    for(unsigned int i = 1; i <= len1; ++i) d[i][0] = i;
+    for(unsigned int i = 1; i <= len2; ++i) d[0][i] = i;
+ 
+    for(unsigned int i = 1; i <= len1; ++i)
+        for(unsigned int j = 1; j <= len2; ++j)
+ 
+                      d[i][j] = std::min( std::min(d[i - 1][j] + 1,d[i][j - 1] + 1),
+                                          d[i - 1][j - 1] + (s1[i - 1] == s2[j - 1] ? 0 : 1) );
+    return d[len1][len2];
+}
+
 
 /* looks for the RL wrapper corresponding to a particular rom title */
 RomSettings *ale::buildRomRLWrapper(const std::string &rom) {
@@ -178,10 +200,23 @@ RomSettings *ale::buildRomRLWrapper(const std::string &rom) {
     size_t dot_idx = rom_str.find_first_of(".");
     rom_str = rom_str.substr(0, dot_idx);
 
+    int closest_match_dist = 10000;
+    std::string closest_match;
+    int dist;
+
     for (size_t i=0; i < sizeof(roms)/sizeof(roms[0]); i++) {
-        if (rom_str == roms[i]->rom()) return roms[i]->clone();
+        if (rom_str == roms[i]->rom()){
+            printf("Found supported ROM: %s\n", roms[i]->rom());
+            return roms[i]->clone();
+        } else if((dist = edit_distance<std::string>(rom_str, roms[i]->rom())) < closest_match_dist){
+            closest_match_dist = dist;
+            closest_match = roms[i]->rom();
+        }
     }
 
+    fprintf(stderr, "no rom wrapper found for %s (searched for %s)\n", rom.c_str(), rom_str.c_str());
+    if(closest_match_dist < rom.size())
+        fprintf(stderr, "(is %s the ROM you meant to use?)\n", closest_match.c_str());
     return NULL;
 }
 

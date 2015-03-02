@@ -252,9 +252,9 @@ ALEInterface::Impl::~Impl() {
 
 
 void ALEInterface::Impl::loadROM(const std::string &rom_file) {
-
     // build the ROM settings object
     m_rom_settings.reset(buildRomRLWrapper(rom_file));
+    if(m_rom_settings.get() == NULL) exit(1);
 
     // now build the emulator 
     m_emu.reset(new ALEInterface::Impl::Emulator());
