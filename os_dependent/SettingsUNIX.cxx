@@ -19,7 +19,6 @@
 #ifndef WIN32
 
 //#include "bspf.hxx"
-#include "emucore/Settings.hxx"
 #include "SettingsUNIX.hxx"
 
 using namespace ale;
@@ -39,4 +38,3 @@ SettingsUNIX::~SettingsUNIX()
 }
 
 #endif
-

@@ -25,6 +25,7 @@ class OSystem;
 
 } // namespace ale
 
+#include "emucore/Settings.hxx"
 #include "emucore/m6502/src/bspf/src/bspf.hxx"
 
 namespace ale {
