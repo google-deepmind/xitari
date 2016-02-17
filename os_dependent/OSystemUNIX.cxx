@@ -27,7 +27,6 @@
 #include <sys/types.h>
 
 //#include "bspf.hxx"
-#include "emucore/OSystem.hxx"
 #include "OSystemUNIX.hxx"
 
 //ALE  #ifdef HAVE_GETTIMEOFDAY
@@ -74,4 +73,3 @@ uInt32 OSystemUNIX::getTicks() {
 }
 
 #endif
-

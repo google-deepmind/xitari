@@ -21,6 +21,7 @@
 #ifndef OSYSTEM_UNIX_HXX
 #define OSYSTEM_UNIX_HXX
 
+#include "emucore/OSystem.hxx"
 #include "emucore/m6502/src/bspf/src/bspf.hxx"
 
 namespace ale {

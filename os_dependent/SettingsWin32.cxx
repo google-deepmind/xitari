@@ -19,7 +19,6 @@
 #ifdef WIN32
 
 #include "emucore/m6502/src/bspf/src/bspf.hxx"
-#include "emucore/Settings.hxx"
 #include "SettingsWin32.hxx"
 
 using namespace ale;
