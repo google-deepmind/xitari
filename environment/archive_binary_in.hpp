@@ -124,6 +124,9 @@ void ArchiveBinaryIn::read(std::map<TKey,TValue>& map) {
     }
 }
 
+template<typename T>
+ArchiveBinaryIn& operator%(ArchiveBinaryIn& ar,T& value);
+
 template<>
 inline ArchiveBinaryIn& operator%(ArchiveBinaryIn& ar,int& value) { ar.readPrimitive(value); return ar; }
 

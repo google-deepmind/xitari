@@ -86,7 +86,7 @@ void ArchiveBinaryOut::writePrimitive(const T& value)
 }
 
 /**
- * Generic write vector 
+ * Generic write vector
  */
 template<typename T>
 void ArchiveBinaryOut::write(const std::vector<T>& value) {
@@ -120,6 +120,9 @@ void ArchiveBinaryOut::write(const std::map<TKey,TValue>& map) {
 /**
  * Generic write primitive function.
  */
+template<typename T>
+ArchiveBinaryOut& operator%(ArchiveBinaryOut& ar,const T& value);
+
 template<>
 inline ArchiveBinaryOut& operator%(ArchiveBinaryOut& ar,const int& value) { ar.writePrimitive(value); return ar; }
 
