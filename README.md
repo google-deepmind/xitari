@@ -1,10 +1,8 @@
-Overview
---------
+# Overview
 
 Xitari is a fork of the Arcade Learning Environment v0.4.
 
-
-=== Original Readme.txt from ALE 0.4, with tidy up by Marc G. Bellemare ===
+# Original Readme.txt from ALE 0.4, with tidy up by Marc G. Bellemare
 
 This is the 0.4 release of the Arcade Learning Environment (ALE), a platform 
 designed for AI research. ALE is based on Stella, an Atari 2600 VCS emulator. 
@@ -22,9 +20,7 @@ of the ALE team.
 Enjoy,
 The ALE team
 
-===============================
-List of command-line parameters
-===============================
+# List of command-line parameters
 
 Execute ./ale -help for more details; alternatively, see documentation 
 available at http://www.arcadelearningenvironment.org.
@@ -49,9 +45,7 @@ available at http://www.arcadelearningenvironment.org.
   implemented on a per-agent basis with internal agents, or for all
   agents when using pipes (fifo/fifo_named) 
 
-=====================================
-Sample agents command-line parameters
-=====================================
+# Sample agents command-line parameters
 
 These parameters are only relevant when using one of the sample agents under
 src/agents.
@@ -61,24 +55,16 @@ src/agents.
 -max_num_frames [n] -- sets the maximum number of frames (independent of how 
   many episodes are played)
 
-=====================================
-Building
-=====================================
+# Building
 
 xitari relies on cmake and make.
 
-To compile source code, enter the command:
+To compile source code, run:
 
-cmake .
+    cmake .
+    make install
 
-followed by 
-
-make install
-
-=====================================
-Citing The Arcade Learning Environment: An Evaluation Platform for 
-General Agents
-=====================================
+# Citing The Arcade Learning Environment: An Evaluation Platform for General Agents
 
 If you use ALE in your research, we ask that you please cite the following.
 
@@ -86,15 +72,15 @@ M. G. Bellemare, Y. Naddaf, J. Veness and M. Bowling. The Arcade Learning Enviro
 
 In BibTeX format:
 
-@ARTICLE{bellemare13arcade,
-  author = {{Bellemare}, M.~G. and {Naddaf}, Y. and {Veness}, J. and {Bowling}, M.},
-  title = {The Arcade Learning Environment: An Evaluation Platform for General Agents},
-  journal = {Journal of Artificial Intelligence Research},
-  year = "2013",
-  month = "jun",
-  volume = "47",
-  pages = "253--279",
-}
+    @ARTICLE{bellemare13arcade,
+      author = {{Bellemare}, M.~G. and {Naddaf}, Y. and {Veness}, J. and {Bowling}, M.},
+      title = {The Arcade Learning Environment: An Evaluation Platform for General Agents},
+      journal = {Journal of Artificial Intelligence Research},
+      year = "2013",
+      month = "jun",
+      volume = "47",
+      pages = "253--279",
+    }
 
 
 
