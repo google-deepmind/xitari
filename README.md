@@ -61,6 +61,19 @@ src/agents.
 -max_num_frames [n] -- sets the maximum number of frames (independent of how 
   many episodes are played)
 
+=====================================
+Building
+=====================================
+
+xitari relies on cmake and make.
+
+To compile source code, enter the command:
+
+cmake .
+
+followed by 
+
+make install
 
 =====================================
 Citing The Arcade Learning Environment: An Evaluation Platform for 
